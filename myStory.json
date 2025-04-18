@@ -1,58 +1,121 @@
 {
-    "Title": "Campus Life on the West Side",
-    "Credits": "Created by Adam Smith (amsmith@ucsc.edu).",
-    "InitialLocation": "Kresge",
+    "Title": "Infiltration: Spy Within the Kingdom",
+    "Credits": "Created by Jimmy Luu.",
+    "InitialLocation": "ForestEdge",
     "Locations": {
-        "Kresge": {
-            "Body": "This is Kresge College, lots of nice trees.",
+        "ForestEdge": {
+            "Body": "You stand at the edge of the enemy kingdom's forest. To the east lies a small village. To the west, an old watchtower looms.",
             "Choices": [
                 {
-                    "Text": "South",
-                    "Target": "Porter"
-                }
-            ]
-        },
-        "Porter": {
-            "Body": "This is Porter College, the trees are nice here too.",
-            "Choices": [
-                {
-                    "Text": "North",
-                    "Target": "Kresge"
+                    "Text": "Go East to Village",
+                    "Target": "Village"
                 },
                 {
-                    "Text": "South",
-                    "Target": "Rachel Carson"
+                    "Text": "Go West to Watchtower",
+                    "Target": "SpyglassTower"
                 }
             ]
         },
-        "Rachel Carson": {
-            "Body": "Rachel Carson College, more sun and fewer trees.",
+        "Village": {
+            "Body": "The village is quiet, but you notice a blacksmith’s shop nearby.",
             "Choices": [
                 {
-                    "Text": "North",
-                    "Target": "Porter"
+                    "Text": "Enter Blacksmith's Shop",
+                    "Target": "Blacksmith"
                 },
                 {
-                    "Text": "South",
-                    "Target": "Oakes"
+                    "Text": "Head North to Castle Gates",
+                    "Target": "CastleGate"
+                },
+                {
+                    "Text": "Return to Forest Edge",
+                    "Target": "ForestEdge"
                 }
             ]
         },
-        "Oakes": {
-            "Body": "Oakes College, even the buildings have tree bark on them.",
+        "SpyglassTower": {
+            "Body": "In the old tower, you discover a dusty spyglass mounted on a stand. Through it, you see the guards' patrol pattern and a hidden path to the castle rooftops. You also hear someone say a codeword: 'Nightfall'.",
+            "InteractiveMechanism": true,
+            "Reveals": {
+                "Codeword": "Nightfall",
+                "HiddenPath": "RooftopEntry"
+            },
             "Choices": [
                 {
-                    "Text": "North",
-                    "Target": "Rachel Carson"
-                },
-                {
-                    "Text": "South",
-                    "Target": "Beyond"
+                    "Text": "Return to Forest Edge",
+                    "Target": "ForestEdge"
                 }
             ]
         },
-        "Beyond": {
-            "Body": "Grass, don't forget to check for ticks!"
+        "Blacksmith": {
+            "Body": "The blacksmith eyes you suspiciously, then discreetly hands you a guard uniform. 'This should help you reach the castle. Good luck.'",
+            "ItemGiven": "GuardUniform",
+            "Choices": [
+                {
+                    "Text": "Return to Village",
+                    "Target": "Village"
+                }
+            ]
+        },
+        "CastleGate": {
+            "Body": "The towering castle gate blocks your path. Two guards stand watch. Without a uniform, you will be turned away.",
+            "Choices": [
+                {
+                    "Text": "Show Guard Uniform",
+                    "Target": "Courtyard",
+                    "RequiresItem": "GuardUniform"
+                },
+                {
+                    "Text": "Retreat to Village",
+                    "Target": "Village"
+                }
+            ]
+        },
+        "Courtyard": {
+            "Body": "You've passed the guards and entered the castle courtyard. From here, you can sneak into various parts of the castle.",
+            "Choices": [
+                {
+                    "Text": "Enter War Room",
+                    "Target": "WarRoom"
+                },
+                {
+                    "Text": "Climb to Rooftops",
+                    "Target": "RooftopEntry",
+                    "RequiresDiscovery": "HiddenPath"
+                }
+            ]
+        },
+        "RooftopEntry": {
+            "Body": "You're now on the castle rooftops. From here, you can find another way inside, unseen.",
+            "Choices": [
+                {
+                    "Text": "Drop into Archive Room",
+                    "Target": "ArchiveRoom"
+                },
+                {
+                    "Text": "Return to Courtyard",
+                    "Target": "Courtyard"
+                }
+            ]
+        },
+        "WarRoom": {
+            "Body": "In the war room, you find a scroll detailing the enemy's plans. With this information, your kingdom might be saved.",
+            "ItemGiven": "EnemyPlans",
+            "Choices": [
+                {
+                    "Text": "Return to Courtyard",
+                    "Target": "Courtyard"
+                }
+            ]
+        },
+        "ArchiveRoom": {
+            "Body": "Stacks of papers and maps line the walls. Perhaps there is more to find here later.",
+            "Choices": [
+                {
+                    "Text": "Return to Rooftop",
+                    "Target": "RooftopEntry"
+                }
+            ]
         }
     }
 }
