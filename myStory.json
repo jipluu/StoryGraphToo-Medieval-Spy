@@ -1,23 +1,24 @@
 {
     "Title": "Infiltration: Spy Within the Kingdom",
-    "Credits": "Created by Jimmy Luu.",
+    "Credits1": "Story created by Jimmy Luu (jipluu@ucsc.edu)", 
+    "Credits2": "StoryGraph framework created by Adam Smith (amsmith@ucsc.edu).",
     "InitialLocation": "ForestEdge",
     "Locations": {
         "ForestEdge": {
-            "Body": "You stand at the edge of the enemy kingdom's forest. To the east lies a small village. To the west, an old watchtower looms.",
+            "Body": "You stand at the edge of the enemy kingdom's forest. To the east lies a small village. To the west, an old SpyglassTower looms.",
             "Choices": [
                 {
                     "Text": "Go East to Village",
                     "Target": "Village"
                 },
                 {
-                    "Text": "Go West to Watchtower",
+                    "Text": "Go West to SpyglassTower",
                     "Target": "SpyglassTower"
                 }
             ]
         },
         "Village": {
-            "Body": "The village is quiet, but you notice a blacksmith’s shop nearby.",
+            "Body": "The village is quiet, but you notice a blacksmith’s shop nearby and a small path leading toward a guarded gate.",
             "Choices": [
                 {
                     "Text": "Enter Blacksmith's Shop",
@@ -26,6 +27,10 @@
                 {
                     "Text": "Head North to Castle Gates",
                     "Target": "CastleGate"
+                },
+                {
+                    "Text": "Take path to Side Gate",
+                    "Target": "SideGate"
                 },
                 {
                     "Text": "Return to Forest Edge",
@@ -71,17 +76,36 @@
                 }
             ]
         },
+        "SideGate": {
+            "Body": "A narrow path leads to a small side gate. A suspicious guard blocks the way. 'What's the codeword?' he asks.",
+            "Choices": [
+                {
+                    "Text": "Say 'Nightfall'",
+                    "Target": "Courtyard",
+                    "RequiresDiscovery": "Nightfall"
+                },
+                {
+                    "Text": "Say nothing and retreat",
+                    "Target": "Village",
+                    "RequiresDiscovery": "NoNightfall"
+                },
+                {
+                    "Text": "Retreat to Village",
+                    "Target": "Village"
+                }
+            ]
+        },
         "Courtyard": {
             "Body": "You've passed the guards and entered the castle courtyard. From here, you can sneak into various parts of the castle.",
             "Choices": [
                 {
                     "Text": "Enter War Room",
-                    "Target": "WarRoom"
+                    "Target": "EnemyWarRoom"
                 },
                 {
                     "Text": "Climb to Rooftops",
                     "Target": "RooftopEntry",
-                    "RequiresDiscovery": "HiddenPath"
+                    "RequiresDiscovery": "Nightfall"
                 }
             ]
         },
@@ -98,13 +122,13 @@
                 }
             ]
         },
-        "WarRoom": {
-            "Body": "In the war room, you find a scroll detailing the enemy's plans. With this information, your kingdom might be saved.",
+        "EnemyWarRoom": {
+            "Body": "In the war room, you find a scroll and documents detailing the enemy's plans. With this information, your kingdom might be saved.",
             "ItemGiven": "EnemyPlans",
             "Choices": [
                 {
-                    "Text": "Return to Courtyard",
-                    "Target": "Courtyard"
+                    "Text": "Escape through the side tunnel",
+                    "Target": "EscapeTunnel"
                 }
             ]
         },
@@ -116,6 +140,28 @@
                     "Target": "RooftopEntry"
                 }
             ]
+        },
+        "EscapeTunnel": {
+            "Body": "You sneak into a dark tunnel beneath the castle and emerge safely outside the walls.",
+            "Choices": [
+                {
+                    "Text": "Head back to Forest Edge",
+                    "Target": "ForestEdgeAfterMission"
+                }
+            ]
+        },
+        "ForestEdgeAfterMission": {
+            "Body": "You've returned to the forest's edge with the enemy's plans. You have completed yout mission. Now you must return home to deliver the intel.",
+            "Choices": [
+                {
+                    "Text": "Travel back to your kingdom",
+                    "Target": "Victory"
+                }
+            ]
+        },
+        "Victory": {
+            "Body": "You return home and deliver the plans. Thanks to your bravery, your kingdom is prepared. The war is delayed for now...mission complete.",
+            "Choices": []
         }
     }
 }
